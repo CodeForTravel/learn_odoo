@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <!-- Define the action -->
+    <record id="action_travel" model="ir.actions.act_window">
+      <field name="name">Travel</field>
+      <field name="res_model">travel.travel</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new travel record
+        </p>
+      </field>
+    </record>
+
+    <!-- Define the menu item -->
+    <menuitem id="travel_menu" name="Travel"/>
+    <menuitem id="travel_records_menu"
+              name="Travel Records"
+              action="action_travel"
+              parent="travel_menu"
+              sequence="5"/>
+  </data>
+</odoo>

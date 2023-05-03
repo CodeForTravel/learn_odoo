@@ -23,23 +23,37 @@
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <form>
-                    <sheet>
-                        <group>
+                    <sheet string="Hello sheet">
+                        <h1>
                             <field name="name"/>
-                            <field name="description"/>
-                            <field name="expected_price"/>
-                            <field name="selling_price"/>
-                            <field name="postcode"/>
-                            <field name="date_availability"/>
-                            <field name="bedrooms"/>
-                            <field name="living_area"/>
-                            <field name="facades"/>
-                            <field name="garage"/>
-                            <field name="garden"/>
-                            <field name="garden_area"/>
-                            <field name="garden_orientation"/>
-                            <field name="state"/>
+                        </h1>
+                        <newline></newline>
+                        <group>
+                            <group>
+                                <field name="postcode"/>
+                                <field name="date_availability"/>    
+                            </group>
+                            <group>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                            </group>
                         </group>
+                        <newline></newline>
+                        <notebook>
+                            <page name="name" string="Description">
+                                <group>
+                                    <field name="description"/>
+                                    <field name="bedrooms"/>
+                                    <field name="living_area"/>
+                                    <field name="facades"/>
+                                    <field name="garage"/>
+                                    <field name="garden"/>
+                                    <field name="garden_area"/>
+                                    <field name="garden_orientation"/>
+                                    <field name="state"/>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

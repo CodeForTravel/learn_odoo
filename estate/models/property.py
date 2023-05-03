@@ -5,7 +5,7 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Property Model"
 
-    name = fields.Char(string="Name of Property", default="Unknown", required=True)
+    name = fields.Char(string="Name of Property", default="My new house", required=True)
     expected_price = fields.Float(string="Expected Price", required=True)
     selling_price = fields.Float(string="Selling Price",readonly=True, required=False, copy=False)
     description = fields.Text()

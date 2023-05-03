@@ -1,18 +1,33 @@
 <odoo>
     <data>
+        <!-- define search view -->
+        <record id="estate_property_search_view" model="ir.ui.view">
+            <field name="name">estate.property.view.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search string="Search property">
+                    <field string="Title" name="name"/>
+                    <field name="postcode"/>
+                    <field name="expected_price"/>
+                    <field name="bedrooms"/>
+                    <field string="Living Area(sqm)" name="living_area"/>
+                    <field name="facades"/>
+                </search>
+            </field>
+        </record>
+
         <!-- define tree view -->
         <record id="estate_property_tree" model="ir.ui.view">
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
+                    <field string="Title" name="name"/>
                     <field name="postcode"/>
                     <field name="bedrooms"/>
-                    <field string="Living Area(sqm)" name="living_area"/>
                     <field name="expected_price"/>
-                    <field name="selling_price"/>
-                    <field string="Available From" name="date_availability"/>
+                    <field string="Living Area(sqm)" name="living_area"/>
+                    <field name="facades"/>
                 </tree>
             </field>
         </record>

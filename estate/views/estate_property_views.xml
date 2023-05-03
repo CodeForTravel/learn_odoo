@@ -7,19 +7,12 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="description"/>
+                    <field name="postcode"/>
+                    <field name="bedrooms"/>
+                    <field string="Living Area(sqm)" name="living_area"/>
                     <field name="expected_price"/>
                     <field name="selling_price"/>
-                    <field name="postcode"/>
-                    <field name="date_availability"/>
-                    <field name="bedrooms"/>
-                    <field name="living_area"/>
-                    <field name="facades"/>
-                    <field name="garage"/>
-                    <field name="garden"/>
-                    <field name="garden_area"/>
-                    <field name="garden_orientation"/>
-                    <field name="state"/>
+                    <field string="Available From" name="date_availability"/>
                 </tree>
             </field>
         </record>

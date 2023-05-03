@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <!-- Define the menu item -->
+        <menuitem id="main_menu_item" name="Real Estate" sequence="10"/>
+        <menuitem id="properties_menu_item" name="Properties" parent="main_menu_item" sequence="10"/>
+        <menuitem id="property_sub_menu_item" name="Manage Properties" parent="properties_menu_item" sequence="10" action="action_estate_perperty"/>
+    </data>
+</odoo>

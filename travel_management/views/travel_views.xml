@@ -1,5 +1,37 @@
 <odoo>
   <data>
+    <!-- Define the tree view -->
+    <record id="view_travel_tree" model="ir.ui.view">
+      <field name="name">travel.tree</field>
+      <field name="model">travel.travel</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="destination"/>
+          <field name="start_date"/>
+          <field name="end_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Define the form view -->
+    <record id="view_travel_form" model="ir.ui.view">
+      <field name="name">travel.form</field>
+      <field name="model">travel.travel</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="destination"/>
+              <field name="start_date"/>
+              <field name="end_date"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <!-- Define the action -->
     <record id="action_travel" model="ir.actions.act_window">
       <field name="name">Travel</field>

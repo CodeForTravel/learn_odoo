@@ -84,6 +84,10 @@
                                     <field name="salesperson_id"/>
                                 </group>
                             </page>
+
+                            <page name="name" string="Offers">
+                                <field name="offer_ids"/>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>

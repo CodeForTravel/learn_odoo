@@ -32,6 +32,7 @@ class EstateProperty(models.Model):
     buyer_id = fields.Many2one("res.partner", string="Buyer")
     salesperson_id = fields.Many2one("res.users", string="Sales Person")
     tag_ids = fields.Many2many("estate.property.tag", string="Tags")
+    offer_ids = fields.One2many("estate.property.offer", "property_id")
 
     def set_to_sold(self):
         self.state = 'sold'

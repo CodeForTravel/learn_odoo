@@ -6,7 +6,6 @@
             <field name="model">estate.property.offer</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="property_id" string="Property"/>
                     <field name="price" string="price"/>
                     <field name="partner_id" string="Partner"/>
                     <field name="status" string="Status"/>

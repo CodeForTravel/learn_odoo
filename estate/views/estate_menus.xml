@@ -1,8 +1,14 @@
 <odoo>
     <data>
         <!-- Define the menu item -->
-        <menuitem id="main_menu_item" name="Real Estate" sequence="10"/>
-        <menuitem id="properties_menu_item" name="Properties" parent="main_menu_item" sequence="10"/>
-        <menuitem id="property_sub_menu_item" name="Manage Properties" parent="properties_menu_item" sequence="10" action="action_estate_perperty"/>
+        <menuitem id="main_menu_item" name="Real Estate" sequence="9"/>
+
+        <!-- for property -->
+        <menuitem id="menu_item_properties" name="Properties" parent="main_menu_item" sequence="10"/>
+        <menuitem id="sub_menu_item_property" name="Manage Properties" parent="menu_item_properties" sequence="10" action="action_estate_perperty"/>
+        
+        <!-- for property type -->
+        <menuitem id="menu_item_property_type" name="Settings" parent="main_menu_item" sequence="11"/>
+        <menuitem id="sub_menu_item_property_type" name="Manage Property Types" parent="menu_item_property_type" sequence="11" action="action_estate_perperty_type"/>
     </data>
 </odoo>

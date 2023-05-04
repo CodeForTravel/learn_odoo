@@ -12,6 +12,7 @@
                     <field name="bedrooms"/>
                     <field string="Living Area(sqm)" name="living_area"/>
                     <field name="facades"/>
+                    <field name="property_type_id" string="Property Type"/>
                     <separator/>
                     <filter string="'New' or 'Offer Received'" name="state" domain="['|', ('state', '=', 'new'), ('state', '=', 'offer received')]"/>
                     <separator/>
@@ -27,6 +28,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field string="Title" name="name"/>
+                    <field name="property_type_id" string="Property Type"/>
                     <field name="postcode"/>
                     <field name="bedrooms"/>
                     <field name="expected_price"/>
@@ -49,6 +51,7 @@
                         <newline></newline>
                         <group>
                             <group>
+                                <field name="property_type_id" string="Property Type"/>
                                 <field name="postcode"/>
                                 <field name="date_availability"/>    
                             </group>

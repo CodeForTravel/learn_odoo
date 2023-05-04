@@ -28,6 +28,7 @@ class EstateProperty(models.Model):
         copy=False,
         selection=[('new', 'New'), ('offer received', 'Offer Received'), ('offer accepted', 'Offer Accepted'), ('sold', 'Sold'), ('canceled', 'Canceled')],
         )
+    property_type_id = fields.Many2one("estate.property.type", string="Property Type")
 
     def set_to_sold(self):
         self.state = 'sold'

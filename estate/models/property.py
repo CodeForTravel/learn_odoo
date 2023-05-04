@@ -45,7 +45,20 @@ class EstateProperty(models.Model):
     @api.depends("offer_ids.price")
     def _compute_best_price(self):
         for record in self:
-            record.best_price = max(p.price for p in record.offer_ids)
+            if not record.offer_ids:
+                record.best_price = None
+            else:
+                record.best_price = max(p.price for p in record.offer_ids if hasattr(p, 'price'))
+
+
+    @api.onchange("garden")
+    def _onchange_garden(self):
+        if self.garden:
+            self.garden_area = 10
+            self.garden_orientation = "north"
+        else:
+            self.garden_area = 0
+            self.garden_orientation = ""
 
     def set_to_sold(self):
         self.state = 'sold'

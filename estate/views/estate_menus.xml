@@ -9,6 +9,7 @@
         
         <!-- for property type -->
         <menuitem id="menu_item_property_type" name="Settings" parent="main_menu_item" sequence="11"/>
-        <menuitem id="sub_menu_item_property_type" name="Manage Property Types" parent="menu_item_property_type" sequence="11" action="action_estate_perperty_type"/>
+        <menuitem id="sub_menu_item_property_type" name="Manage Property Types" parent="menu_item_property_type" sequence="11" action="action_estate_property_type"/>
+        <menuitem id="sub_menu_item_property_tag" name="Manage Property Tags" parent="menu_item_property_type" sequence="12" action="action_estate_property_tag"/>
     </data>
 </odoo>

@@ -1,20 +1,20 @@
 <odoo>
     <data>
         <!-- define search view -->
-        <record id="estate_property_type_search_view" model="ir.ui.view">
-            <field name="name">estate.property.type.view.search</field>
-            <field name="model">estate.property.type</field>
+        <record id="estate_property_tag_search_view" model="ir.ui.view">
+            <field name="name">estate.property.tag.view.search</field>
+            <field name="model">estate.property.tag</field>
             <field name="arch" type="xml">
-                <search string="Search property">
+                <search string="Search tag">
                     <field string="Title" name="name"/>
                 </search>
             </field>
         </record>
 
         <!-- define tree view -->
-        <record id="estate_property_type_tree" model="ir.ui.view">
-            <field name="name">estate.property.type.tree</field>
-            <field name="model">estate.property.type</field>
+        <record id="estate_property_tag_tree" model="ir.ui.view">
+            <field name="name">estate.property.tag.tree</field>
+            <field name="model">estate.property.tag</field>
             <field name="arch" type="xml">
                 <tree>
                     <field string="Title" name="name"/>
@@ -23,9 +23,9 @@
         </record>
 
         <!-- define form view -->
-        <record id="estate_property_type_form" model="ir.ui.view">
-            <field name="name">estate.property.type.form</field>
-            <field name="model">estate.property.type</field>
+        <record id="estate_property_tag_form" model="ir.ui.view">
+            <field name="name">estate.property.tag.form</field>
+            <field name="model">estate.property.tag</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -38,13 +38,13 @@
         </record>
 
         <!-- define the action -->
-        <record id="action_estate_property_type" model="ir.actions.act_window">
-            <field name="name">Property Type</field>
-            <field name="res_model">estate.property.type</field>
+        <record id="action_estate_property_tag" model="ir.actions.act_window">
+            <field name="name">Property Tag</field>
+            <field name="res_model">estate.property.tag</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create a new property type record
+                    Create a new property tag record
                 </p>
             </field>
         </record>

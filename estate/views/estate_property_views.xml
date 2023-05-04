@@ -49,6 +49,8 @@
                             <field name="name"/>
                         </h1>
                         <newline></newline>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                        <newline></newline>
                         <group>
                             <group>
                                 <field name="property_type_id" string="Property Type"/>

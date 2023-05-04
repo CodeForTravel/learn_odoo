@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 
 class EstateProperty(models.Model):
@@ -50,7 +51,6 @@ class EstateProperty(models.Model):
             else:
                 record.best_price = max(p.price for p in record.offer_ids if hasattr(p, 'price'))
 
-
     @api.onchange("garden")
     def _onchange_garden(self):
         if self.garden:
@@ -59,6 +59,42 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = ""
+
+    def sold_property_action(self):
+        message = ""
+        for property in self:
+            if property.state == "canceled":
+                message = "cancelled property cannot sold"
+            else:
+                property.state = "sold"
+                return {
+                    'effect': {
+                        'fadeout': 'slow',
+                        'message': "Property sold successfully",
+                        'type': 'rainbow_man',
+                    }
+                }
+        if message:
+            raise UserError(message)
+        return True
+    
+    def cancel_property_action(self):
+        message = ""
+        for property in self:
+            if property.state == "sold":
+                message = "sold  property cannot cancelled"
+            else:
+                property.state = "canceled"
+                return {
+                    'effect': {
+                        'fadeout': 'slow',
+                        'message': "Property cancelled successfully",
+                        'type': 'rainbow_man',
+                    }
+                }
+        if message:
+            raise UserError(message)
+        return True
 
     def set_to_sold(self):
         self.state = 'sold'

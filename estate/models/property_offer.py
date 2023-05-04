@@ -17,7 +17,7 @@ class PropertyOffer(models.Model):
    date_deadline = fields.Date(
       compute="_compute_date_deadline",
       inverse='_inverse_date_deadline',
-      tracking=40, index=True,
+      index=True,
       readonly=False, store=True
    )
 

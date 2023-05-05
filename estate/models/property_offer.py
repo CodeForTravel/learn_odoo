@@ -39,6 +39,10 @@ class PropertyOffer(models.Model):
    def action_offer_accepted(self):
       for offer in self:
          offer.status = "accepted"
+         # set selling price to property model
+         offer.property_id.selling_price = offer.price
+         # set buyer to property model
+         offer.property_id.buyer_id = offer.partner_id
          return {
             'effect': {
                'fadeout': 'slow',

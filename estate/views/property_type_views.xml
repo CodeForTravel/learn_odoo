@@ -16,7 +16,7 @@
             <field name="name">estate.property.type.tree</field>
             <field name="model">estate.property.type</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree default_order="name desc">
                     <field string="Title" name="name"/>
                 </tree>
             </field>

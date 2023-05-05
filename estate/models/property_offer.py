@@ -23,6 +23,7 @@ class PropertyOffer(models.Model):
 
    validity = fields.Integer(default=7)
 
+   #compute method
    @api.depends("create_date", "validity")
    def _compute_date_deadline(self):
       for record in self:
@@ -31,11 +32,12 @@ class PropertyOffer(models.Model):
          else:
             record.date_deadline = datetime.datetime.now() + datetime.timedelta(days=record.validity)
 
+   #inverse compute method
    def _inverse_date_deadline(self):
         for record in self:
             record.validity = (record.date_deadline - record.create_date.date()).days
 
-
+   #action
    def action_offer_accepted(self):
       for offer in self:
          offer.status = "accepted"
@@ -51,6 +53,7 @@ class PropertyOffer(models.Model):
             }
          }
 
+   #action
    def action_offer_refused(self):
       for offer in self:
          offer.status = "refused"
@@ -61,3 +64,9 @@ class PropertyOffer(models.Model):
                'type': 'rainbow_man',
             }
          }
+      
+   #SQL constraints.
+   _sql_constraints = [
+        ('check_price', 'CHECK(price > 0)',
+         'The offer price of a property must be greater than 0!'),
+    ]

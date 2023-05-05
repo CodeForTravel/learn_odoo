@@ -38,11 +38,13 @@ class EstateProperty(models.Model):
     total_area = fields.Float(compute="_compute_total_area")
     best_price = fields.Float(compute="_compute_best_price")
 
+    #computed method
     @api.depends("garden_area", "living_area")
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.garden_area + record.living_area
-
+    
+    #computed method
     @api.depends("offer_ids.price")
     def _compute_best_price(self):
         for record in self:
@@ -50,7 +52,8 @@ class EstateProperty(models.Model):
                 record.best_price = None
             else:
                 record.best_price = max(p.price for p in record.offer_ids if hasattr(p, 'price'))
-
+   
+    #onchange method
     @api.onchange("garden")
     def _onchange_garden(self):
         if self.garden:
@@ -58,8 +61,10 @@ class EstateProperty(models.Model):
             self.garden_orientation = "north"
         else:
             self.garden_area = 0
+   
             self.garden_orientation = ""
 
+    #model action
     def sold_property_action(self):
         message = ""
         for property in self:
@@ -77,7 +82,8 @@ class EstateProperty(models.Model):
         if message:
             raise UserError(message)
         return True
-    
+
+    #model action
     def cancel_property_action(self):
         message = ""
         for property in self:
@@ -96,5 +102,13 @@ class EstateProperty(models.Model):
             raise UserError(message)
         return True
 
-    def set_to_sold(self):
-        self.state = 'sold'
+
+    #SQL constraints.
+    _sql_constraints = [
+        #expected_price validation
+        ('check_expected_price', 'CHECK(expected_price > 0)',
+         'The expected price of a property must be greater than 0!'),
+        #selling_price validation
+        ('check_selling_price', 'CHECK(selling_price >= 0)',
+         'The selling price of a property must be positive')
+    ]

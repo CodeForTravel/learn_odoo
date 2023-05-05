@@ -49,6 +49,7 @@
                         type="object" class="oe_highlight"/>
                     <button name="cancel_property_action" string="Cancel"
                         type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,offer received,offer accepted,sold"/>
                 </header>
                     <sheet string="Hello sheet">
                         <h1>
@@ -59,7 +60,7 @@
                         <newline></newline>
                         <group>
                             <group>
-                                <field name="state" string="Status"/>
+                                <!-- <field name="state" string="Status"/> -->
                                 <field name="property_type_id" string="Property Type"/>
                                 <field name="postcode"/>
                                 <field name="date_availability"/>    

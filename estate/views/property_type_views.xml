@@ -18,6 +18,7 @@
             <field name="arch" type="xml">
                 <tree default_order="name desc">
                     <field string="Title" name="name"/>
+                    <field name="sequence" widget="handle"/>
                 </tree>
             </field>
         </record>

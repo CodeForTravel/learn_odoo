@@ -36,4 +36,24 @@ class PropertyOffer(models.Model):
             record.validity = (record.date_deadline - record.create_date.date()).days
 
 
+   def action_offer_accepted(self):
+      for offer in self:
+         offer.status = "accepted"
+         return {
+            'effect': {
+               'fadeout': 'slow',
+               'message': "Offer accepted successfully",
+               'type': 'rainbow_man',
+            }
+         }
 
+   def action_offer_refused(self):
+      for offer in self:
+         offer.status = "refused"
+         return {
+            'effect': {
+               'fadeout': 'slow',
+               'message': "Offer Refused successfully",
+               'type': 'rainbow_man',
+            }
+         }

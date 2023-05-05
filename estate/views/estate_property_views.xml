@@ -60,8 +60,7 @@
                         <newline></newline>
                         <group>
                             <group>
-                                <!-- <field name="state" string="Status"/> -->
-                                <field name="property_type_id" string="Property Type"/>
+                                <field name="property_type_id" string="Property Type" options="{'no_create': True}"/>
                                 <field name="postcode"/>
                                 <field name="date_availability"/>    
                             </group>

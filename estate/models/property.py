@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError
-
+from odoo.exceptions import ValidationError
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -112,3 +112,17 @@ class EstateProperty(models.Model):
         ('check_selling_price', 'CHECK(selling_price >= 0)',
          'The selling price of a property must be positive')
     ]
+
+    #python constraints.
+    @api.constrains('selling_price')
+    def _check_selling_price(self):
+        """
+        Add a constraint so that the selling price cannot be lower than 90% of 
+        the expected price.
+
+        """
+        for record in self:
+            if record.selling_price < (0.9 * record.expected_price):
+                raise ValidationError(
+                    "Selling price cannot be lower than 90% of the expected price!"
+                )

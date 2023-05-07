@@ -34,6 +34,7 @@
                     <field name="expected_price"/>
                     <field string="Living Area(sqm)" name="living_area"/>
                     <field name="facades"/>
+                    <field name="date_availability" optional="True"/>
                 </tree>
             </field>
         </record>

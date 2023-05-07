@@ -6,6 +6,7 @@ class PropertyTag(models.Model):
     _order = "name"
 
     name = fields.Char(string='Name', required=True)
+    color = fields.Integer()
 
     #SQL constraints.
     _sql_constraints = [

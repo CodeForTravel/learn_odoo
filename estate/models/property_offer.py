@@ -9,7 +9,6 @@ class PropertyOffer(models.Model):
    price = fields.Float()
    status = fields.Selection(
        copy=False,
-       default="accepted",
        selection=[("accepted", "Accepted"), ("refused", "Refused")]
    )
    partner_id = fields.Many2one("res.partner", required=True)
@@ -46,6 +45,7 @@ class PropertyOffer(models.Model):
          offer.property_id.selling_price = offer.price
          # set buyer to property model
          offer.property_id.buyer_id = offer.partner_id
+         offer.property_id.state = 'offer accepted'
          return {
             'effect': {
                'fadeout': 'slow',

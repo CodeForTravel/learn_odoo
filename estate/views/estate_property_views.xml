@@ -45,10 +45,13 @@
             <field name="arch" type="xml">
                 <form>
                 <header>
-                    <button name="sold_property_action" string="Sold"
-                        type="object" class="oe_highlight"/>
+                    <button name="sold_property_action" string="Sold" class="oe_highlight" 
+                        type="object" states="new,offer received,offer accepted,sold,canceled" 
+                        attrs="{'invisible': [('state', '!=', 'offer accepted')]}"/>
+
                     <button name="cancel_property_action" string="Cancel"
-                        type="object" class="oe_highlight"/>
+                        type="object"/>
+
                     <field name="state" widget="statusbar" statusbar_visible="new,offer received,offer accepted,sold"/>
                 </header>
                     <sheet string="Hello sheet">
@@ -56,7 +59,7 @@
                             <field name="name"/>
                         </h1>
                         <newline></newline>
-                        <field name="tag_ids" widget="many2many_tags"/>
+                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         <newline></newline>
                         <group>
                             <group>

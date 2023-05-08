@@ -26,7 +26,11 @@
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-muted="state=='sold'"
+                    decoration-bf="state=='offer accepted'"
+                    decoration-success="state=='offer received' or state=='offer accepted'"
+                    >
+                    <field name="state" invisible="1"/>
                     <field string="Title" name="name"/>
                     <field name="property_type_id" string="Property Type"/>
                     <field name="postcode"/>

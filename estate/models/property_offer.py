@@ -1,5 +1,6 @@
 import datetime
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class PropertyOffer(models.Model):
    _name = "estate.property.offer"
@@ -76,3 +77,20 @@ class PropertyOffer(models.Model):
         ('check_price', 'CHECK(price > 0)',
          'The offer price of a property must be greater than 0!'),
     ]
+   
+   @api.model
+   def create(self, vals):
+      """
+      At offer creation, set the property state to ‘Offer Received’. Also raise an error if the user tries to create an offer with a lower amount than an existing offer.
+      """
+      existing_offer = self.env['estate.property.offer'].search([
+         ('property_id', '=', vals.get('property_id')),
+         ('price', '>', vals.get('price'))
+      ])
+
+      if existing_offer:
+         raise ValidationError("Cannot create an offer with a lower amount than an existing offer.")
+      
+      offer = super().create(vals)
+      offer.property_id.state = 'offer received'
+      return offer

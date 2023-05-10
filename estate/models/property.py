@@ -38,6 +38,7 @@ class EstateProperty(models.Model):
 
     total_area = fields.Float(compute="_compute_total_area")
     best_price = fields.Float(compute="_compute_best_price")
+    # user_id = fields.Many2one("res.users", string="User")
 
     #computed method
     @api.depends("garden_area", "living_area")
